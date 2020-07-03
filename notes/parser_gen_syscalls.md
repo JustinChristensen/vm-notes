@@ -405,8 +405,49 @@ write(1, "parsed examples/spec_file.pspec\n", 32parsed examples/spec_file.pspec
 ) = 32
 exit_group(0)                           = ?
 +++ exited with 0 +++
+```
 
+```
+mmap(0x7fa90a25a000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xe000) = 0x7fa90a25a000
+mmap(NULL, 2221576, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa909e2d000
+mprotect(0x7fa909e46000, 2097152, PROT_NONE) = 0
+mmap(0x7fa90a046000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x19000) = 0x7fa90a046000
+mmap(0x7fa90a048000, 13832, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fa90a048000
+mmap(NULL, 44635, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7fa90a476000
+mmap(NULL, 4131552, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa909a3c000
+mprotect(0x7fa909c23000, 2097152, PROT_NONE) = 0
+mmap(0x7fa909e23000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1e7000) = 0x7fa909e23000
+mmap(0x7fa909e29000, 15072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fa909e29000
+mmap(NULL, 2185608, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa909826000
+mprotect(0x7fa90983a000, 2097152, PROT_NONE) = 0
+mmap(0x7fa909a3a000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x14000) = 0x7fa909a3a000
+mmap(NULL, 3789144, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa909488000
+mprotect(0x7fa909625000, 2093056, PROT_NONE) = 0
+mmap(0x7fa909824000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x19c000) = 0x7fa909824000
+mmap(NULL, 2177320, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa909274000
+mprotect(0x7fa909280000, 2097152, PROT_NONE) = 0
+mmap(0x7fa909480000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xc000) = 0x7fa909480000
+mmap(0x7fa909482000, 22824, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fa909482000
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fa90a474000
+mmap(NULL, 2122088, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa90906d000
+mprotect(0x7fa909072000, 2097152, PROT_NONE) = 0
+mmap(0x7fa909272000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x5000) = 0x7fa909272000
+mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fa90a471000
+mprotect(0x7fa909e23000, 16384, PROT_READ) = 0
+mprotect(0x7fa909272000, 4096, PROT_READ) = 0
+mprotect(0x7fa909a3a000, 4096, PROT_READ) = 0
+mprotect(0x7fa909824000, 4096, PROT_READ) = 0
+mprotect(0x7fa90a25a000, 4096, PROT_READ) = 0
+mprotect(0x7fa909480000, 4096, PROT_READ) = 0
+mprotect(0x7fa90a046000, 4096, PROT_READ) = 0
+mprotect(0x55eba7489000, 4096, PROT_READ) = 0
+mprotect(0x7fa90a483000, 4096, PROT_READ) = 0
+```
    
+```
+See:
+https://github.com/torvalds/linux/blob/9ff7258575d5fee011649d20cc56de720a395191/Documentation/filesystems/proc.rst
+
 (size) address           perms offset  dev   inode      pathname
   ^ 
   | added by me
@@ -466,7 +507,9 @@ exit_group(0)                           = ?
 12288       7ffe9a9a9000-7ffe9a9ac000 r--p 00000000 00:00 0                          [vvar]
 8192        7ffe9a9ac000-7ffe9a9ae000 r-xp 00000000 00:00 0                          [vdso]
     ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+```
 
+```
 [wroathe@rohan:~] $ sudo cat /proc/1129/status
 Name:	parser_gen
 Umask:	0002
@@ -522,9 +565,6 @@ Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,000
 Mems_allowed_list:	0
 voluntary_ctxt_switches:	1
 nonvoluntary_ctxt_switches:	10
-
-See:
-https://github.com/torvalds/linux/blob/9ff7258575d5fee011649d20cc56de720a395191/Documentation/filesystems/proc.rst
 
 Two Separate Invocations:
 
@@ -622,5 +662,4 @@ ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsysca
 7ffeccdfb000-7ffeccdfd000 r-xp 00000000 00:00 0                          [vdso]
 ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
 [wroathe@rohan:parser_gen] (master) $
-
 ```
