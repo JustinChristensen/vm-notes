@@ -14,25 +14,22 @@ class VmPsFunc(gdb.Function):
         super(VmPsFunc, self).__init__("vm_ps")
 
     def invoke(self):
-        task_fmt = "{pid!s:<5} {comm:<32}"
-        mm_fmt = "{mmap_base!s:<20} {task_size!s:<20}"
+        task_fmt = "{pid!s:<5} {comm:<32} {mmap_base!s:<20} {task_size!s:<20}\n"
 
-        gdb.write("{} {}\n".format(
-            task_fmt.format(pid="pid", comm="name"),
-            mm_fmt.format(mmap_base="mmap_base", task_size="task_size")
+        gdb.write(task_fmt.format(
+            pid="pid", comm="name",
+            mmap_base="mmap_base", task_size="task_size"
         ))
 
         for task in task_lists():
-            row = task_fmt.format(pid=task["pid"], comm=task["comm"].string())
-
             if task["mm"]:
                 mm = task["mm"].dereference()
-                row = row + " " + mm_fmt.format(
-                    mmap_base=mm["mmap_base"].format_string(format='x'), 
-                    task_size=mm["task_size"]
-                )
 
-            gdb.write(row + "\n")
+                gdb.write(task_fmt.format(
+                    pid=task["pid"], comm=task["comm"].string(),
+                    mmap_base=mm["mmap_base"], task_size=mm["task_size"]
+                ))
+
         return True
 
 VmPsFunc()
