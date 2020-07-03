@@ -1,0 +1,6 @@
+.gdb_history
+vmlinux
+linux-4.15.0/
+linux_4.15.0.orig.tar.gz
+.DS_Store
+*.pyc
