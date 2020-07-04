@@ -408,13 +408,6 @@ exit_group(0)                           = ?
 ```
 
 ```
-openat(AT_FDCWD, "/home/wroathe/lib/tls/x86_64/x86_64/libbase.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
-openat(AT_FDCWD, "/home/wroathe/lib/tls/x86_64/libbase.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
-openat(AT_FDCWD, "/home/wroathe/lib/tls/x86_64/libbase.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
-openat(AT_FDCWD, "/home/wroathe/lib/tls/libbase.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
-openat(AT_FDCWD, "/home/wroathe/lib/x86_64/x86_64/libbase.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
-openat(AT_FDCWD, "/home/wroathe/lib/x86_64/libbase.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
-openat(AT_FDCWD, "/home/wroathe/lib/x86_64/libbase.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
 openat(AT_FDCWD, "/home/wroathe/lib/libbase.so", O_RDONLY|O_CLOEXEC) = 3
 mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fa90a481000
 mmap(NULL, 2159640, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa90a04c000
@@ -425,7 +418,6 @@ mmap(NULL, 2221576, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f
 mprotect(0x7fa909e46000, 2097152, PROT_NONE) = 0
 mmap(0x7fa90a046000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x19000) = 0x7fa90a046000
 mmap(0x7fa90a048000, 13832, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fa90a048000
-openat(AT_FDCWD, "/home/wroathe/lib/libc.so.6", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
 openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
 mmap(NULL, 44635, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7fa90a476000
 openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
@@ -433,12 +425,10 @@ mmap(NULL, 4131552, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f
 mprotect(0x7fa909c23000, 2097152, PROT_NONE) = 0
 mmap(0x7fa909e23000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1e7000) = 0x7fa909e23000
 mmap(0x7fa909e29000, 15072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fa909e29000
-openat(AT_FDCWD, "/home/wroathe/lib/libcgraph.so.6", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
 openat(AT_FDCWD, "/usr/lib/x86_64-linux-gnu/libcgraph.so.6", O_RDONLY|O_CLOEXEC) = 3
 mmap(NULL, 2185608, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa909826000
 mprotect(0x7fa90983a000, 2097152, PROT_NONE) = 0
 mmap(0x7fa909a3a000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x14000) = 0x7fa909a3a000
-openat(AT_FDCWD, "/home/wroathe/lib/libm.so.6", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
 openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libm.so.6", O_RDONLY|O_CLOEXEC) = 3
 mmap(NULL, 3789144, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa909488000
 mprotect(0x7fa909625000, 2093056, PROT_NONE) = 0
@@ -448,7 +438,6 @@ mmap(NULL, 2177320, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f
 mprotect(0x7fa909280000, 2097152, PROT_NONE) = 0
 mmap(0x7fa909480000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xc000) = 0x7fa909480000
 mmap(0x7fa909482000, 22824, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fa909482000
-openat(AT_FDCWD, "/home/wroathe/lib/libcdt.so.5", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
 openat(AT_FDCWD, "/usr/lib/x86_64-linux-gnu/libcdt.so.5", O_RDONLY|O_CLOEXEC) = 3
 mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fa90a474000
 mmap(NULL, 2122088, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa90906d000
@@ -471,6 +460,8 @@ openat(AT_FDCWD, "examples/spec_file.pspec", O_RDONLY) = 3
 ```
 See:
 https://github.com/torvalds/linux/blob/9ff7258575d5fee011649d20cc56de720a395191/Documentation/filesystems/proc.rst
+https://github.com/torvalds/linux/blob/9ff7258575d5fee011649d20cc56de720a395191/fs/proc/base.c#L3162
+https://stevens.netmeister.org/631/elf.html
 
 (size) address           perms offset  dev   inode      pathname
   ^ 
@@ -531,6 +522,15 @@ https://github.com/torvalds/linux/blob/9ff7258575d5fee011649d20cc56de720a395191/
 12288       7ffe9a9a9000-7ffe9a9ac000 r--p 00000000 00:00 0                          [vvar]
 8192        7ffe9a9ac000-7ffe9a9ae000 r-xp 00000000 00:00 0                          [vdso]
     ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+mmap(NULL, 2159640, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa90a04c000
+mprotect(0x7fa90a05b000, 2093056, PROT_NONE) = 0
+mmap(0x7fa90a25a000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xe000) = 0x7fa90a25a000
+
+61440       7f057394d000-7f057395c000 r-xp 00000000 08:01 1069251                    /home/wroathe/compilers/libs/base/libbase.so
+2093056     7f057395c000-7f0573b5b000 ---p 0000f000 08:01 1069251                    /home/wroathe/compilers/libs/base/libbase.so
+4096        7f0573b5b000-7f0573b5c000 r--p 0000e000 08:01 1069251                    /home/wroathe/compilers/libs/base/libbase.so
+4096        7f0573b5c000-7f0573b5d000 rw-p 0000f000 08:01 1069251                    /home/wroathe/compilers/libs/base/libbase.so
 ```
 
 ```
