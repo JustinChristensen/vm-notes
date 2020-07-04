@@ -40,7 +40,7 @@ class VmDetails(gdb.Function):
     def __init__(self):
         super(VmDetails, self).__init__("vm_details")
 
-    def invoke(self, task):
+    def invoke(self, task, longfmt=False):
         if (task.type == task_type.get_type().pointer()):
             task = task.dereference()
 
@@ -66,12 +66,16 @@ class VmDetails(gdb.Function):
 
         while vma:
             vma = vma.dereference()
-            size = vma["vm_end"] - vma["vm_start"]
-            total += size
-            gdb.write("  start: {}, end: {}, size: {}\n".format(vma["vm_start"], vma["vm_end"], size))
+            if longfmt:
+                gdb.write("{}\n".format(vma))
+            else:
+                size = vma["vm_end"] - vma["vm_start"]
+                total += size
+                gdb.write("  start: {}, end: {}, size: {}\n".format(vma["vm_start"], vma["vm_end"], size))
             vma = vma["vm_next"]
 
-        gdb.write("grand total: {}\n".format(total))
+        if not longfmt:
+            gdb.write("grand total: {}\n".format(total))
 
         return True
 
