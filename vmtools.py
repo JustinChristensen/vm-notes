@@ -3,9 +3,21 @@ import os
 sys.path.insert(0, "./scripts/gdb")
 
 from linux.tasks import task_lists, get_task_by_pid
-from linux.utils import CachedType
+from linux.utils import CachedType, container_of
 
 task_type = CachedType("struct task_struct")
+mm_type = CachedType("struct mm_struct")
+
+def mm_lists():
+    mm_ptr_type = mm_type.get_type().pointer()
+    init_mm = gdb.parse_and_eval("init_mm").address
+    mm = init_mm
+
+    while True:
+        yield mm
+        mm = container_of(mm['mmlist']['next'], mm_ptr_type, "mmlist")
+        if mm == init_mm:
+            return
 
 class VmPsFunc(gdb.Function):
     """Dump VM details about tasks"""
@@ -50,12 +62,13 @@ class VmDetails(gdb.Function):
 
         mm = task["mm"].dereference()
 
-        gdb.write("pid: {pid}\ntask_size: {task_size}\nmmap_base: {mmap_base}\nmmap_end: {mmap_end}\n".format(
-            pid=task["pid"],
-            task_size=mm["task_size"],
-            mmap_base=mm["mmap_base"],
-            mmap_end=mm["highest_vm_end"]
-        ))
+        if not longfmt:
+            gdb.write("pid: {pid}\ntask_size: {task_size}\nmmap_base: {mmap_base}\nmmap_end: {mmap_end}\n".format(
+                pid=task["pid"],
+                task_size=mm["task_size"],
+                mmap_base=mm["mmap_base"],
+                mmap_end=mm["highest_vm_end"]
+            ))
 
         vma = mm["mmap"]
 
@@ -80,3 +93,29 @@ class VmDetails(gdb.Function):
         return True
 
 VmDetails()
+
+# Hmm, mm_struct's arent' chained together like tasks are
+# class VmMMsFunc(gdb.Function):
+#     """Dump MM details about tasks"""
+# 
+#     def __init__(self):
+#         super(VmMMsFunc, self).__init__("vm_mms")
+# 
+#     def invoke(self, longfmt=False):
+#         for mm in mm_lists():
+#             if longfmt:
+#                 gdb.write("{}".format(mm.dereference()))
+#             else:
+#                 gdb.write("{} {} ".format(mm["mmap_base"], mm["highest_vm_end"], ))
+# 
+#                 task = mm["owner"]
+#                 if task:
+#                     gdb.write("{}".format(task["pid"]))
+# 
+#                 gdb.write("\n")
+# 
+# 
+#         return True
+# 
+# VmMMsFunc()
+
